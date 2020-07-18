@@ -2,5 +2,10 @@
   "name": "hasura",
   "version": "1.0.0",
   "author": "Kei Fujikawa",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "console": "hasura console",
+    "metadata": "hasura metadata",
+    "migrate": "hasura migrate"
+  }
 }
