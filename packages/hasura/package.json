@@ -4,6 +4,7 @@
   "author": "Kei Fujikawa",
   "license": "MIT",
   "scripts": {
+    "start": "docker-compose up -d",
     "console": "hasura console",
     "metadata": "hasura metadata",
     "migrate": "hasura migrate"
