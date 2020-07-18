@@ -4,8 +4,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "frontend": "yarn workspace frontend",
-    "backend": "yarn workspace backend"
+    "web": "yarn workspace web",
+    "mobile": "yarn workspace mobile",
+    "hasura": "yarn workspace hasura",
+    "services": "yarn workspace services"
   },
   "workspaces": {
     "packages": [
