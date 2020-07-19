@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "author": "Kei Fujikawa",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "webpack-dev-server --progress --develop",
     "start:storybook": "yarn start-storybook -p 6006",
@@ -50,6 +51,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.10.0",
     "@emotion/core": "^10.0.28",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",

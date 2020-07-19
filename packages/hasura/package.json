@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Kei Fujikawa",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "docker-compose up -d",
     "down": "docker-compose down",

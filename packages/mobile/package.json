@@ -3,5 +3,6 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "Kei Fujikawa",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }

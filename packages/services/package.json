@@ -2,5 +2,6 @@
   "name": "services",
   "version": "1.0.0",
   "author": "Kei Fujikawa",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }
