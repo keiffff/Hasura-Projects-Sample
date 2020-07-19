@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "docker-compose up -d",
+    "down": "docker-compose down",
     "console": "hasura console",
     "metadata": "hasura metadata",
     "migrate": "hasura migrate"
