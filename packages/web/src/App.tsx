@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from 'providers/Auth';
 import { auth0Config } from 'variants/authConfig';
-import { Routes } from 'Routes';
+import { Routes } from 'routes';
 import { ErrorBoundary } from 'components/Errorboundary';
 import { LoadingScreen } from 'components/LoadingScreen';
 
