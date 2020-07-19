@@ -1,9 +1,9 @@
 module.exports = {
   schema: [
     {
-      'https://insta-clone-sample.herokuapp.com/v1/graphql': {
+      [`${process.env.GRAPHQL_ENDPOINT}`]: {
         headers: {
-          Authorization: `Bearer${process.env.AUTH_TOKEN}`,
+          'x-hasura-admin-secret': process.env.ADMIN_SECRET,
         },
       },
     },
