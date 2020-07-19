@@ -1,5 +1,3 @@
-const DEPENDENCY_IMPORT_FROM = '@apollo/client';
-
 module.exports = {
   schema: [
     {
@@ -19,9 +17,8 @@ module.exports = {
         namingConvention: {
           transformUnderscore: true,
         },
-        gqlImport: `${DEPENDENCY_IMPORT_FROM}#gql`,
-        apolloReactCommonImportFrom: DEPENDENCY_IMPORT_FROM,
-        apolloReactHooksImportFrom: DEPENDENCY_IMPORT_FROM,
+        reactApolloVersion: 3,
+        gqlImport: '@apollo/client#gql',
         skipTypename: false,
         withHooks: true,
         withHOC: false,
