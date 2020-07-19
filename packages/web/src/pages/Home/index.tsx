@@ -1,10 +1,27 @@
 import React from 'react';
 import { GlobalHeader } from 'components/GlobalHeader';
+import { useNotifyNewPostsSubscription } from 'types/graphql';
+import { useAuth } from 'providers/Auth';
+import { LoadingScreen } from 'components/LoadingScreen';
 
-const Home = () => (
-  <>
-    <GlobalHeader pageTitle="Home" />
-  </>
-);
+const Home = () => {
+  const { currentUser } = useAuth();
+  const { loading, data } = useNotifyNewPostsSubscription({
+    variables: { userId: currentUser.sub },
+  });
+
+  return (
+    <>
+      <GlobalHeader pageTitle="Home" />
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <pre>
+          <code>{JSON.stringify({ data }, null, 2)}</code>
+        </pre>
+      )}
+    </>
+  );
+};
 
 export default Home;

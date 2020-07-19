@@ -17,7 +17,7 @@ type User = {
 
 type Auth0Context = {
   authenticated: boolean;
-  user: User;
+  currentUser: User;
   loading: boolean;
   loginWithRedirect(options: RedirectLoginOptions): Promise<void>;
   getTokenSilently(options?: GetTokenSilentlyOptions): Promise<string | undefined>;
@@ -35,7 +35,7 @@ export function useAuth() {
 export const AuthProvider = ({ children, ...initOptions }: Props) => {
   const history = useHistory();
   const [authenticated, setAuthenticated] = useState(false);
-  const [user, setUser] = useState((null as unknown) as User);
+  const [currentUser, setcurrentUser] = useState((null as unknown) as User);
   const [client, setClient] = useState((null as unknown) as Auth0Client);
   const [loading, setLoading] = useState(true);
 
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children, ...initOptions }: Props) => {
       setAuthenticated(responseIsAuthenticated);
       if (responseIsAuthenticated) {
         const responseGetUser = await auth0FromHook.getUser();
-        setUser(responseGetUser);
+        setcurrentUser(responseGetUser);
       }
       setLoading(false);
     };
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children, ...initOptions }: Props) => {
     <AuthContext.Provider
       value={{
         authenticated,
-        user,
+        currentUser,
         loading,
         loginWithRedirect: (options: RedirectLoginOptions) => client.loginWithRedirect(options),
         getTokenSilently: (options?: GetTokenSilentlyOptions) => client.getTokenSilently(options),
