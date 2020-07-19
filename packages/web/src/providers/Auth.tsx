@@ -35,7 +35,7 @@ export function useAuth() {
 export const AuthProvider = ({ children, ...initOptions }: Props) => {
   const history = useHistory();
   const [authenticated, setAuthenticated] = useState(false);
-  const [currentUser, setcurrentUser] = useState((null as unknown) as User);
+  const [currentUser, setCurrentUser] = useState((null as unknown) as User);
   const [client, setClient] = useState((null as unknown) as Auth0Client);
   const [loading, setLoading] = useState(true);
 
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children, ...initOptions }: Props) => {
       setAuthenticated(responseIsAuthenticated);
       if (responseIsAuthenticated) {
         const responseGetUser = await auth0FromHook.getUser();
-        setcurrentUser(responseGetUser);
+        setCurrentUser(responseGetUser);
       }
       setLoading(false);
     };

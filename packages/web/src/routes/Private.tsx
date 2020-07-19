@@ -5,8 +5,7 @@ import { ApolloProvider } from 'providers/Apollo';
 import { useAuth } from 'providers/Auth';
 
 const Home = lazy(() => import('pages/Home'));
-const Articles = lazy(() => import('pages/Articles'));
-const Profile = lazy(() => import('pages/Profile'));
+const ProfileShow = lazy(() => import('pages/ProfileShow'));
 
 export const Private = () => {
   const { getTokenSilently } = useAuth();
@@ -27,11 +26,8 @@ export const Private = () => {
         <Route path={routes.home} exact>
           <Home />
         </Route>
-        <Route path={routes.articles}>
-          <Articles />
-        </Route>
-        <Route path={routes.profile}>
-          <Profile />
+        <Route path={routes.profileShow}>
+          <ProfileShow />
         </Route>
         <Redirect to={routes.home} />
       </Switch>

@@ -6,18 +6,18 @@ import { LoadingScreen } from 'components/LoadingScreen';
 
 const Home = () => {
   const { currentUser } = useAuth();
-  const { loading, data } = useNotifyNewPostsSubscription({
+  const { loading, data: notifyNewPostsSubscriptionData } = useNotifyNewPostsSubscription({
     variables: { userId: currentUser.sub },
   });
 
   return (
     <>
-      <GlobalHeader pageTitle="Home" />
+      <GlobalHeader pageTitle="Home" userId={currentUser.sub} />
       {loading ? (
         <LoadingScreen />
       ) : (
         <pre>
-          <code>{JSON.stringify({ data }, null, 2)}</code>
+          <code>{JSON.stringify({ notifyNewPostsSubscriptionData }, null, 2)}</code>
         </pre>
       )}
     </>
