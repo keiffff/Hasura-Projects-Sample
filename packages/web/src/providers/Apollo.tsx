@@ -8,14 +8,18 @@ import {
 } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { WebSocketLink } from '@apollo/client/link/ws';
-import { gqlEndpoints } from 'variants/endpoints';
+import { environment } from 'constants/environment';
 
 type Props = {
   children: ReactNode;
   accessToken?: string;
 };
 
-const wsUri = gqlEndpoints.hasura.replace(/^https?/, 'wss');
+const [searchValue, replaceValue] = environment.hasuraGraphqlEndpoint.startsWith('https')
+  ? [/^https?/, 'wss']
+  : [/^http?/, 'ws'];
+
+const wsUri = environment.hasuraGraphqlEndpoint.replace(searchValue, replaceValue);
 
 function createApolloClient(accessToken?: string) {
   const headers = accessToken ? { Authorization: `Bearer ${accessToken}` } : {};
@@ -30,7 +34,7 @@ function createApolloClient(accessToken?: string) {
   });
 
   const httpLink = new HttpLink({
-    uri: gqlEndpoints.hasura,
+    uri: environment.hasuraGraphqlEndpoint,
     headers,
   });
 

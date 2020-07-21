@@ -1,9 +1,9 @@
 module.exports = {
   schema: [
     {
-      [`${process.env.GRAPHQL_ENDPOINT}`]: {
+      [`${process.env.HASURA_GRAPHQL_ENDPOINT}`]: {
         headers: {
-          'x-hasura-admin-secret': process.env.ADMIN_SECRET,
+          'x-hasura-admin-secret': process.env.HASURA_GRAPHQL_ADMIN_SECRET,
         },
       },
     },

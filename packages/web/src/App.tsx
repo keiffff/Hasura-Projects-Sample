@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from 'providers/Auth';
-import { auth0Config } from 'variants/authConfig';
+import { environment } from 'constants/environment';
 import { Routes } from 'routes';
 import { ErrorBoundary } from 'components/Errorboundary';
 import { LoadingScreen } from 'components/LoadingScreen';
@@ -11,10 +11,10 @@ export const App = () => (
     <ErrorBoundary>
       <Suspense fallback={<LoadingScreen />}>
         <AuthProvider
-          domain={auth0Config.domain}
-          client_id={auth0Config.clientId}
+          domain={environment.authDomain}
+          client_id={environment.authClientId}
           redirect_uri={window.location.origin}
-          audience={auth0Config.audience}
+          audience={environment.authAudience}
         >
           <Routes />
         </AuthProvider>

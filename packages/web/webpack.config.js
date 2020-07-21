@@ -2,6 +2,7 @@ const path = require('path');
 const { argv } = require('yargs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 
 const outputPath = path.resolve(__dirname, 'dist');
 
@@ -38,7 +39,11 @@ module.exports = {
       },
     ],
   },
-  plugins: [new ForkTsCheckerWebpackPlugin(), new HtmlWebpackPlugin({ template: './src/index.html' })],
+  plugins: [
+    new ForkTsCheckerWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new DotenvWebpackPlugin(),
+  ],
   output: {
     filename: 'index.js',
     path: outputPath,
