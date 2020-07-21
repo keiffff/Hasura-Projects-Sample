@@ -3,6 +3,7 @@ const { argv } = require('yargs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const { EnvironmentPlugin } = require('webpack');
 
 const outputPath = path.resolve(__dirname, 'dist');
 
@@ -42,7 +43,9 @@ module.exports = {
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
-    new DotenvWebpackPlugin(),
+    ...(argv.develop
+      ? [new DotenvWebpackPlugin()]
+      : [new EnvironmentPlugin(Object.keys(process.env))]),
   ],
   output: {
     filename: 'index.js',
