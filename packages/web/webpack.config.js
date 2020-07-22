@@ -43,9 +43,7 @@ module.exports = {
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
-    ...(argv.develop
-      ? [new DotenvWebpackPlugin()]
-      : [new EnvironmentPlugin(Object.keys(process.env))]),
+    argv.develop ? new DotenvWebpackPlugin() : new EnvironmentPlugin(Object.keys(process.env)),
   ],
   output: {
     filename: 'index.js',
