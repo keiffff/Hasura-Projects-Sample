@@ -26,10 +26,15 @@ type Auth0Context = {
 
 type Props = { children: ReactNode } & Auth0ClientOptions;
 
-const AuthContext = createContext((null as unknown) as Auth0Context);
+const AuthContext = createContext<Auth0Context | null>(null);
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const value = useContext(AuthContext);
+  if (!value) {
+    throw new Error('You must provide a value to the context');
+  }
+
+  return value;
 }
 
 export const AuthProvider = ({ children, ...initOptions }: Props) => {
